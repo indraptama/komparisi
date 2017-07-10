@@ -13,16 +13,24 @@ export default class InputKtp extends React.Component {
     const renderData = ktpField.map((Value, idx) => {
       if (Value.type === "radio") {
         return (
-          <TextField
-            key={idx}
-            type={Value.type}
-            floatingLabelText={Value.label}
-            name={Value.name}
-            hintText=""
-            floatingLabelFixed={true}
+          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButton
+            value="not_light"
+            label="Selected by default"
           />
+          </RadioButtonGroup>
         )
       }
+      return (
+        <TextField
+          key={idx}
+          type={Value.type}
+          floatingLabelText={Value.label}
+          name={Value.name}
+          hintText=""
+          floatingLabelFixed={true}
+        />
+      )
 
 
 
