@@ -12,13 +12,21 @@ export default class InputKtp extends React.Component {
   render() {
     const renderData = ktpField.map((Value, idx) => {
       if (Value.type === "radio") {
+        const choices = Value.option;
         return (
-          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-            <RadioButton
-            value="not_light"
-            label="Selected by default"
-          />
-          </RadioButtonGroup>
+          <div>
+            <h6>{Value.label}</h6>
+            <RadioButtonGroup key={idx}
+              name={Value.name}
+              defaultSelected={Value.option[0].value}>
+                {choices.map(choice => {
+                  console.log(choice.label);
+                  return (
+                    <RadioButton value={choice.value} label={choice.label} />
+                  )
+                })}
+            </RadioButtonGroup>
+          </div>
         )
       }
       return (
@@ -31,10 +39,7 @@ export default class InputKtp extends React.Component {
           floatingLabelFixed={true}
         />
       )
-
-
-
-      })
+    })
 
     return (
     <div>
@@ -46,7 +51,7 @@ export default class InputKtp extends React.Component {
 }
 
 // Mockup Data from server
-const PersonData = {
+const ServerData = {
   "_id": 3204070911850005,
   "name": "Indra Pratama Putra",
   "bornPlace" : "Bandung",
@@ -90,12 +95,12 @@ const ktpField = [
     "name": "sex",
     "option" : [
       {
-        "label": "Belum Menikah",
-        "value": "single"
+        "label": "Laki-laki",
+        "value": "male"
       },
       {
-        "label": "Menikah",
-        "value": "mariage"
+        "label": "Perempuan",
+        "value": "female"
       }
     ]
   },
@@ -167,3 +172,10 @@ const ktpField = [
   // floatingLabelFixed={true}
   // floatingLabelText="Nomor Induk Kependudukan"
 // />
+//
+//           // <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+          //   <RadioButton
+          //   value="not_light"
+          //   label="Selected by default"
+          // />
+          // </RadioButtonGroup>
