@@ -1,5 +1,6 @@
 import React from 'react'
-import TextField from 'material-ui/TextField'
+import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
@@ -13,28 +14,58 @@ export default class InputKtp extends React.Component {
     const renderData = ktpField.map((Value, idx) => {
       if (Value.type === "radio") {
         return (
-          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-            <RadioButton
-            value="not_light"
-            label="Selected by default"
-          />
-          </RadioButtonGroup>
+          <li className="mb2 pt2">
+            <div className="flex items-star">
+              <div className="w-30">
+                {Value.label}
+              </div>
+              <div className="w-70">
+                <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+                  {Value.options.map(Val => {
+                    return (
+                      <RadioButton
+                        value={Val.value}
+                        label={Val.label}
+                      />
+                    )
+                  })}
+                </RadioButtonGroup>
+              </div>
+            </div>
+          </li>
+        )
+      } else if (Value.type === 'date') {
+        return (
+          <li className="mb2">
+            <div className="flex items-baseline">
+              <div className="w-30">
+                {Value.label}
+              </div>
+              <div className="w-70">
+                <DatePicker hintText={Value.label} mode="landscape" fullWidth={true} />
+              </div>
+            </div>
+          </li>
         )
       }
       return (
-        <TextField
-          key={idx}
-          type={Value.type}
-          floatingLabelText={Value.label}
-          name={Value.name}
-          hintText=""
-          floatingLabelFixed={true}
-        />
+        <li className="mb2">
+          <div className="flex items-baseline">
+            <div className="w-30">
+              {Value.label}
+            </div>
+            <div className="w-70 pl2">
+              <TextField
+                key={idx}
+                type={Value.type}
+                name={Value.name}
+                fullWidth={true}
+              />
+            </div>
+          </div>
+        </li>
       )
-
-
-
-      })
+    })
 
     return (
     <div>
@@ -65,7 +96,7 @@ const PersonData = {
 
 const ktpField = [
   {
-    "label": "Nomor Induk Kependudukan",
+    "label": "N.I.K",
     "type": "number",
     "name": "nik",
   },
@@ -88,7 +119,7 @@ const ktpField = [
     "label": "Jenis Kelamin",
     "type": "radio",
     "name": "sex",
-    "option" : [
+    "options" : [
       {
         "label": "Belum Menikah",
         "value": "single"
@@ -133,7 +164,7 @@ const ktpField = [
     "label": "Status Perkawinan",
     "type": "radio",
     "name": "martialStatus",
-    "option": [
+    "options": [
       {
         "label": "Belum Menikah",
         "value": "single"
