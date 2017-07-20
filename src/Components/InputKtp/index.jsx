@@ -2,8 +2,8 @@ import React from 'react'
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 
 export default class InputKtp extends React.Component {
   constructor(props) {
@@ -15,17 +15,16 @@ export default class InputKtp extends React.Component {
       if (Value.type === "radio") {
         const choices = Value.option;
         return (
-<<<<<<< HEAD
-          <li className="mb2 pt2">
+          <li className="mb2 pt2" key={Value.name}>
             <div className="flex items-star">
               <div className="w-30">
                 {Value.label}
               </div>
               <div className="w-70">
-                <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+                <RadioButtonGroup name={Value.name} defaultSelected="not_light">
                   {Value.options.map(Val => {
                     return (
-                      <RadioButton
+                      <RadioButton key={Value.Name+'_'+Val.value}
                         value={Val.value}
                         label={Val.label}
                       />
@@ -38,42 +37,26 @@ export default class InputKtp extends React.Component {
         )
       } else if (Value.type === 'date') {
         return (
-          <li className="mb2">
+          <li className="mb2" key={Value.name}>
             <div className="flex items-baseline">
               <div className="w-30">
                 {Value.label}
               </div>
               <div className="w-70">
-                <DatePicker hintText={Value.label} mode="landscape" fullWidth={true} />
+                <DatePicker name={Value.name} hintText={Value.label} mode="landscape" fullWidth={true} />
               </div>
             </div>
           </li>
-=======
-          <div>
-            <h6>{Value.label}</h6>
-            <RadioButtonGroup key={idx}
-              name={Value.name}
-              defaultSelected={Value.option[0].value}>
-                {choices.map(choice => {
-                  console.log(choice.label);
-                  return (
-                    <RadioButton value={choice.value} label={choice.label} />
-                  )
-                })}
-            </RadioButtonGroup>
-          </div>
->>>>>>> origin/master
         )
       }
       return (
-        <li className="mb2">
+        <li className="mb2" key={Value.name}>
           <div className="flex items-baseline">
             <div className="w-30">
               {Value.label}
             </div>
             <div className="w-70 pl2">
               <TextField
-                key={idx}
                 type={Value.type}
                 name={Value.name}
                 fullWidth={true}
@@ -85,29 +68,19 @@ export default class InputKtp extends React.Component {
     })
 
     return (
-    <div>
-      <ul>
-        {renderData}
-      </ul>
-    </div>);
-  }
-}
-
-// Mockup Data from server
-const ServerData = {
-  "_id": 3204070911850005,
-  "name": "Indra Pratama Putra",
-  "bornPlace" : "Bandung",
-  "birthday": "Nov 9, 1985",
-  "sex": "male",
-  "address" : {
-    "street": "Jalan Pasir Jati A67",
-    "rt": 1,
-    "rw": 5,
-    "kelurahan": "jatiendah",
-    "kecamatan": "cilengkrang",
-    "city": "kabupaten bandung",
-    "occupation": "Wiraswasta"
+    <Card>
+      <CardHeader
+      title="Without Avatar"
+      subtitle="Subtitle"
+      actAsExpander={true}
+      showExpandableButton={true}
+      />
+      <CardText expandable={true}>
+        <ul>
+          {renderData}
+        </ul>
+      </CardText>
+    </Card>);
   }
 }
 
@@ -205,20 +178,4 @@ const ktpField = [
     "type": "text",
     "name": "occupation",
   }
-]
-
-
-// <TextField
-  // type="number"
-  // name="nik"
-  // hintText="1023434335353"
-  // floatingLabelFixed={true}
-  // floatingLabelText="Nomor Induk Kependudukan"
-// />
-//
-//           // <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-          //   <RadioButton
-          //   value="not_light"
-          //   label="Selected by default"
-          // />
-          // </RadioButtonGroup>
+];
