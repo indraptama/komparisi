@@ -21,4 +21,4 @@ function theApp() {
 }
 
 ReactDOM.render(theApp(), document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
