@@ -9,7 +9,7 @@ export default class KtpTextInput extends React.Component {
 
   render() {
     return (
-      <div className="flex items-center">
+      <label className="flex items-center w-100">
         <div className="w-30 pr3">
           {this.props.label}
         </div>
@@ -23,6 +23,6 @@ export default class KtpTextInput extends React.Component {
             onChange={this.props.onChange}
           />
         </div>
-      </div>);
+      </label>);
   }
 }

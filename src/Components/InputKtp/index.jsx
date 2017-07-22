@@ -1,8 +1,9 @@
 import React from 'react';
 import fetch from 'unfetch';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
 import FormKtp from '../FormKtp'
-
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 export default class InputKtp extends React.Component {
@@ -13,28 +14,13 @@ export default class InputKtp extends React.Component {
     }
   }
 
-  componentDidMount() {
-    fetch('dataKtp.json')
-      .then(resp => resp.json())
-      .then(respData => {
-        this.setState({
-          Data: respData
-        })
-      })
-  }
 
   render() {
     return (
       <div>
-        <Card>
-          <CardHeader
-            title={this.state.Data.name}
-            subtitle={this.state.Data.nik}
-            avatar={this.state.Data.avatar}
-            actAsExpander={true}
-            showExpandableButton={true}
-          />
-          <CardText expandable={true}>
+        <Paper zDepth={1} className="pa4">
+          <h4 className="fw5 f4 mb3">Identitas Penghadap</h4>
+          <div className="mb4">
             <FormKtp
               nik={this.state.Data.nik}
               name={this.state.Data.name}
@@ -52,8 +38,14 @@ export default class InputKtp extends React.Component {
               martialStatus={this.state.Data.martialStatus}
               occupation={this.state.Data.occupation}
             />
-          </CardText>
-        </Card>
+          </div>
+          <div className="tr">
+
+          <FlatButton label="Reset" />
+          <FlatButton label="Simpan" />
+        </div>
+        </Paper>
+        {console.log(this.state.Data.nik)}
       </div>);
   }
 }

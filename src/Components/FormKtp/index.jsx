@@ -47,8 +47,12 @@ export default class FormKtp extends React.Component {
     })
   }
 
-  handleChange(){
-
+  handleChange(event){
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]: target.value
+    });
   }
 
   handleOption() {
@@ -58,10 +62,10 @@ export default class FormKtp extends React.Component {
   render() {
     return (
       <ul>
-        <li><KtpTextInput name="nik" label="N.I.K" defValue={this.state.nik} type="number"/></li>
-        <li><KtpTextInput name="name" label="Nama Lengkap" defValue={this.state.name}/></li>
-        <li><KtpTextInput name="bornPlace" label="Kota Kelahiran" defValue={this.state.bornPlace}/></li>
-        <li><KtpTextInput name="bornDate" label="Tanggal Lahir" defValue={this.state.bornDate}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="nik" label="N.I.K" defValue={this.state.nik} type="number"/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="name" label="Nama Lengkap" defValue={this.state.name}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="bornPlace" label="Kota Kelahiran" defValue={this.state.bornPlace}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="bornDate" label="Tanggal Lahir" defValue={this.state.bornDate}/></li>
 
         <li>
           <div className="flex items-start w-100 mt3">
@@ -75,9 +79,9 @@ export default class FormKtp extends React.Component {
           </div>
         </li>
 
-        <li><KtpTextInput name="streetAddress" label="Alamat" defValue={this.state.streetAddress}/></li>
-        <li><KtpTextInput name="rt" label="RT" defValue={this.state.rt} type="number"/></li>
-        <li><KtpTextInput name="rw" label="RW" defValue={this.state.rw} type="number"/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="streetAddress" label="Alamat" defValue={this.state.streetAddress}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="rt" label="RT" defValue={this.state.rt} type="number"/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="rw" label="RW" defValue={this.state.rw} type="number"/></li>
 
         <li>
           <div className="flex items-center w-100">
@@ -98,7 +102,7 @@ export default class FormKtp extends React.Component {
           </div>
         </li>
 
-        <li><KtpTextInput name="kecamatan" label="Kecamatan" defValue={this.state.kecamatan}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="kecamatan" label="Kecamatan" defValue={this.state.kecamatan}/></li>
 
         <li>
           <div className="flex items-center w-100">
@@ -133,7 +137,7 @@ export default class FormKtp extends React.Component {
           </div>
         </li>
 
-        <li><KtpTextInput name="occupation" label="Pekerjaan" defValue={this.state.occupation}/></li>
+        <li><KtpTextInput onChange={this.handleChange} name="occupation" label="Pekerjaan" defValue={this.state.occupation}/></li>
       </ul>
     );
   }

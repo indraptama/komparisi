@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
 
 import './App.css';
@@ -10,8 +9,11 @@ class App extends Component {
   render() {
     return (
         <div className="App pa2">
-          <InputKtp />
-          <InputKtp />
+          <ul>
+            <li className="mb3"><InputKtp /></li>
+            <li className="mb3"><InputKtp /></li>
+            <li className="mb3"><InputKtp /></li>
+          </ul>
         </div>
     );
   }
