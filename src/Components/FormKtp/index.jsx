@@ -3,6 +3,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 // My Components
 import KtpTextInput from '../KtpTextInput'
@@ -10,89 +11,130 @@ import KtpTextInput from '../KtpTextInput'
 export default class FormKtp extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      nik: this.props.nik,
+      name: this.props.name,
+      bornPlace: this.props.bornPlace,
+      bornDate: this.props.bornDate,
+      sex: this.props.sex,
+      streetAddress: this.props.streetAddress,
+      rt: this.props.rt,
+      rw: this.props.rw,
+      kelurahanType: this.props.kelurahanType,
+      kelurahanName: this.props.kelurahanName,
+      kecamatan: this.props.kecamatan,
+      cityType: this.props.cityType,
+      cityName: this.props.cityName,
+      martialStatus: this.props.martialStatus,
+      occupation: this.props.occupation,
+    }
+
+    this.handleSelectKelurahan = this.handleSelectKelurahan.bind(this)
+    this.handleSelectCity = this.handleSelectCity.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleOption = this.handleOption.bind(this)
+  }
+
+  handleSelectKelurahan(event, index, value){
+    this.setState({
+      kelurahanType: value,
+    })
+  }
+
+  handleSelectCity(event, index, value){
+    this.setState({
+      cityType: value,
+    })
+  }
+
+  handleChange(){
+
+  }
+
+  handleOption() {
+
   }
 
   render() {
     return (
+      <ul>
+        <li><KtpTextInput name="nik" label="N.I.K" defValue={this.state.nik} type="number"/></li>
+        <li><KtpTextInput name="name" label="Nama Lengkap" defValue={this.state.name}/></li>
+        <li><KtpTextInput name="bornPlace" label="Kota Kelahiran" defValue={this.state.bornPlace}/></li>
+        <li><KtpTextInput name="bornDate" label="Tanggal Lahir" defValue={this.state.bornDate}/></li>
 
-    <ul>
-      <li><KtpTextInput name="nik" label="N.I.K" defValue="" type="number"/></li>
-      <li><KtpTextInput name="name" label="Nama Lengkap" defValue=""/></li>
-      <li><KtpTextInput name="bornPlace" label="Kota Kelahiran" defValue=""/></li>
-      <li><KtpTextInput name="bornDate" label="Tanggal Lahir" defValue=""/></li>
-      <li>
-        <div className="flex items-center w-100">
-          <div className="w-30">Jenis Kelamin</div>
-          <div className="w-70">
-            <SelectField name="sex" autoWidth={false} style={Style.dropdown} menuItemStyle={Style.menuItem}>
-              <MenuItem value={'male'} primaryText="Laki-laki" />
-              <MenuItem value={'female'} primaryText="Perempuan" />
-            </SelectField>
+        <li>
+          <div className="flex items-start w-100 mt3">
+            <div className="w-30 pr3">Jenis Kelamin</div>
+            <div className="w-70">
+              <RadioButtonGroup name="sex" defaultSelected={this.state.sex}>
+                <RadioButton value="male" label="Laki-laki" />
+                <RadioButton value="female" label="Perempuan" />
+              </RadioButtonGroup>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      <li><KtpTextInput name="streetAddress" label="Alamat" defValue=""/></li>
-      <li><KtpTextInput name="rt" label="RT" defValue="" type="number"/></li>
-      <li><KtpTextInput name="rw" label="RW" defValue="" type="number"/></li>
+        <li><KtpTextInput name="streetAddress" label="Alamat" defValue={this.state.streetAddress}/></li>
+        <li><KtpTextInput name="rt" label="RT" defValue={this.state.rt} type="number"/></li>
+        <li><KtpTextInput name="rw" label="RW" defValue={this.state.rw} type="number"/></li>
 
-      <li>
-        <div className="flex items-center w-100">
-          <div className="w-30">Kelurahan</div>
-          <div className="w-70">
-            <div className="flex">
-              <div className="w-30">
-                <SelectField name="kelurahan" autoWidth={false} style={Style.dropdown} menuItemStyle={Style.menuItem}>
-                  <MenuItem value={'kelurahan'} primaryText="Kelurahan" />
-                  <MenuItem value={'desa'} primaryText="Desa" />
-                </SelectField>
-              </div>
-              <div className="w-70 pl2">
-                <TextField name="kelurahanName" label="" defValue="" fullWidth/>
+        <li>
+          <div className="flex items-center w-100">
+            <div className="w-30">Kelurahan</div>
+            <div className="w-70">
+              <div className="flex">
+                <div className="w-40">
+                  <SelectField id="kelurahanType" value={this.state.kelurahanType} autoWidth={false} style={Style.dropdown} onChange={this.handleSelectKelurahan}>
+                    <MenuItem value={'desa'} primaryText="Desa" />
+                    <MenuItem value={'kelurahan'} primaryText="Kelurahan" />
+                  </SelectField>
+                </div>
+                <div className="w-60 pl3">
+                  <TextField name="kelurahanName" label="" defaultValue={this.state.kelurahanName} fullWidth/>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      <li><KtpTextInput name="kecamatan" label="Kecamatan" defValue=""/></li>
+        <li><KtpTextInput name="kecamatan" label="Kecamatan" defValue={this.state.kecamatan}/></li>
 
-      <li>
-        <div className="flex items-center w-100">
-          <div className="w-30">Kota</div>
-          <div className="w-70">
-            <div className="flex">
-              <div className="w-30">
-                <SelectField name="" autoWidth={false} style={Style.dropdown} menuItemStyle={Style.menuItem}>
-                  <MenuItem value={'kota'} primaryText="Kota" />
-                  <MenuItem value={'kabupaten'} primaryText="Kabupaten" />
-                </SelectField>
-              </div>
-              <div className="w-70 pl2">
-                <TextField name="kelurahanName" label="" defValue="" fullWidth/>
+        <li>
+          <div className="flex items-center w-100">
+            <div className="w-30">Kota</div>
+            <div className="w-70">
+              <div className="flex">
+                <div className="w-40">
+                  <SelectField name="cityType" value={this.state.cityType} autoWidth={false} style={Style.dropdown} onChange={this.handleSelectCity}>
+                    <MenuItem value={'kabupaten'} primaryText="Kabupaten" />
+                    <MenuItem value={'kota'} primaryText="Kota" />
+                  </SelectField>
+                </div>
+                <div className="w-60 pl3">
+                  <TextField name="cityName" label="" defaultValue={this.state.cityName} fullWidth/>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      <li>
-        <div className="flex items-center w-100">
-          <div className="w-30">Status Pernikahan</div>
-          <div className="w-70">
-            <SelectField name="marriageStatus" autoWidth={false} style={Style.dropdown} menuItemStyle={Style.menuItem}>
-              <MenuItem value={'single'} primaryText="Belum Menikah" />
-              <MenuItem value={'marriage'} primaryText="Menikah" />
-              <MenuItem value={'devorced'} primaryText="Cerai Hidup" />
-              <MenuItem value={'widowed'} primaryText="Cerai Mati" />
-            </SelectField>
+        <li>
+          <div className="flex items-start w-100 mt3">
+            <div className="w-30 pr3">Status Pernikahan</div>
+            <div className="w-70">
+              <RadioButtonGroup name="martialStatus" defaultSelected={this.state.martialStatus}>
+                <RadioButton value="single" label="Belum Menikah" />
+                <RadioButton value="marriage" label="Menikah" />
+                <RadioButton value="devorced" label="Cerai Hidup" />
+                <RadioButton value="widowed" label="Cerai Mati" />
+              </RadioButtonGroup>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      <li><KtpTextInput name="occupation" label="Pekerjaan" defValue=""/></li>
-    </ul>
-
+        <li><KtpTextInput name="occupation" label="Pekerjaan" defValue={this.state.occupation}/></li>
+      </ul>
     );
   }
 }
@@ -104,6 +146,5 @@ const Style = {
     display: 'block',
   },
   MenuItem: {
-    marginRight: 0,
   }
 }

@@ -1,181 +1,59 @@
-import React from 'react'
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import React from 'react';
+import fetch from 'unfetch';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import FormKtp from '../FormKtp'
+
 
 
 export default class InputKtp extends React.Component {
   constructor(props) {
     super(props);
+    this.state= {
+      Data: {},
+    }
+  }
+
+  componentDidMount() {
+    fetch('dataKtp.json')
+      .then(resp => resp.json())
+      .then(respData => {
+        this.setState({
+          Data: respData
+        })
+      })
   }
 
   render() {
-    const renderData = ktpField.map((Value, idx) => {
-      if (Value.type === "radio") {
-        const choices = Value.option;
-        return (
-          <li className="mb2 pt2" key={Value.name}>
-            <div className="flex items-star">
-              <div className="w-30">
-                {Value.label}
-              </div>
-              <div className="w-70">
-                <RadioButtonGroup name={Value.name} defaultSelected="not_light">
-                  {Value.options.map(Val => {
-                    return (
-                      <RadioButton key={Value.Name+'_'+Val.value}
-                        value={Val.value}
-                        label={Val.label}
-                      />
-                    )
-                  })}
-                </RadioButtonGroup>
-              </div>
-            </div>
-          </li>
-        )
-      } else if (Value.type === 'date') {
-        return (
-          <li className="mb2" key={Value.name}>
-            <div className="flex items-baseline">
-              <div className="w-30">
-                {Value.label}
-              </div>
-              <div className="w-70">
-                <DatePicker name={Value.name} hintText={Value.label} mode="landscape" fullWidth={true} />
-              </div>
-            </div>
-          </li>
-        )
-      }
-      return (
-        <li className="mb2" key={Value.name}>
-          <div className="flex items-baseline">
-            <div className="w-30">
-              {Value.label}
-            </div>
-            <div className="w-70 pl2">
-              <TextField
-                type={Value.type}
-                name={Value.name}
-                fullWidth={true}
-              />
-            </div>
-          </div>
-        </li>
-      )
-    })
-
     return (
-    <Card>
-      <CardHeader
-      title="Without Avatar"
-      subtitle="Subtitle"
-      actAsExpander={true}
-      showExpandableButton={true}
-      />
-      <CardText expandable={true}>
-        <ul>
-          {renderData}
-        </ul>
-      </CardText>
-    </Card>);
+      <div>
+        <Card>
+          <CardHeader
+            title={this.state.Data.name}
+            subtitle={this.state.Data.nik}
+            avatar={this.state.Data.avatar}
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={true}>
+            <FormKtp
+              nik={this.state.Data.nik}
+              name={this.state.Data.name}
+              bornPlace={this.state.Data.bornPlace}
+              bornDate={this.state.Data.bornDate}
+              sex={this.state.Data.sex}
+              streetAddress={this.state.Data.streetAddress}
+              rt={this.state.Data.rt}
+              rw={this.state.Data.rw}
+              kelurahanType={this.state.Data.kelurahanType}
+              kelurahanName={this.state.Data.kelurahanName}
+              kecamatan={this.state.Data.kecamatan}
+              cityType={this.state.Data.cityType}
+              cityName={this.state.Data.cityName}
+              martialStatus={this.state.Data.martialStatus}
+              occupation={this.state.Data.occupation}
+            />
+          </CardText>
+        </Card>
+      </div>);
   }
 }
-
-const ktpField = [
-  {
-    "label": "N.I.K",
-    "type": "number",
-    "name": "nik",
-  },
-  {
-    "label": "Nama Lengkap",
-    "type": "text",
-    "name": "name",
-  },
-  {
-    "label": "Kota Kelahiran",
-    "type": "text",
-    "name": "bornPlace",
-  },
-  {
-    "label": "Tanggal Lahir",
-    "type": "date",
-    "name": "birthDate",
-  },
-  {
-    "label": "Jenis Kelamin",
-    "type": "radio",
-    "name": "sex",
-    "options" : [
-      {
-        "label": "Laki-laki",
-        "value": "male"
-      },
-      {
-        "label": "Perempuan",
-        "value": "female"
-      }
-    ]
-  },
-  {
-    "label": "Alamat",
-    "type": "text",
-    "name": "street",
-  },
-  {
-    "label": "RT",
-    "type": "number",
-    "name": "rt",
-  },
-  {
-    "label": "RW",
-    "type": "number",
-    "name": "rw",
-  },
-  {
-    "label": "Kelurahan / Desa",
-    "type": "text",
-    "name": "kelurahan",
-  },
-  {
-    "label": "Kecamatan",
-    "type": "text",
-    "name": "kecamatan",
-  },
-  {
-    "label": "Kota",
-    "type": "text",
-    "name": "city",
-  },
-  {
-    "label": "Status Perkawinan",
-    "type": "radio",
-    "name": "martialStatus",
-    "options": [
-      {
-        "label": "Belum Menikah",
-        "value": "single"
-      },
-      {
-        "label": "Menikah",
-        "value": "mariage"
-      },
-      {
-        "label": "Cerai Hidup",
-        "value": "divorce"
-      },
-      {
-        "label": "Cerai Mati",
-        "value": "widowed"
-      }
-    ]
-  },
-  {
-    "label": "Pekerjaan",
-    "type": "text",
-    "name": "occupation",
-  }
-];

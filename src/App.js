@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+
 
 import './App.css';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import FormKtp from './Components/FormKtp'
+import InputKtp from './Components/InputKtp'
 
 class App extends Component {
   render() {
     return (
-        <div className="App">
-          <FormKtp />
+        <div className="App pa2">
+          <InputKtp />
+          <InputKtp />
         </div>
     );
   }

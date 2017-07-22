@@ -19,6 +19,8 @@ export default class KtpTextInput extends React.Component {
             type={this.props.type}
             fullWidth
             defaultValue={this.props.defValue}
+            value={this.props.value}
+            onChange={this.props.onChange}
           />
         </div>
       </div>);
