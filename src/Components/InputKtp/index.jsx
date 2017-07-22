@@ -10,10 +10,9 @@ export default class InputKtp extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      Data: {},
+      Data: this.props.dataEntry,
     }
   }
-
 
   render() {
     return (
@@ -41,11 +40,10 @@ export default class InputKtp extends React.Component {
           </div>
           <div className="tr">
 
-          <FlatButton label="Reset" />
-          <FlatButton label="Simpan" />
+          <FlatButton label="Reset" onTouchTap={this.props.clearFiled}/>
+          <FlatButton label="Simpan" onTouchTap={this.props.submitFiled}/>
         </div>
         </Paper>
-        {console.log(this.state.Data.nik)}
       </div>);
   }
 }
