@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
 
 import 'minireset.css';
 import 'tachyons';
@@ -15,8 +16,10 @@ injectTapEventPlugin();
 function theApp() {
   return (
     <MuiThemeProvider>
-      <App />
-    </MuiThemeProvider>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+  </MuiThemeProvider>
   )
 }
 

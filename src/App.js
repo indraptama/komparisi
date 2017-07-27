@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import KtpInput from './Components/Organisms/KtpInput'
+
+import Header from './Components/Organisms/Header'
+import RoutePath from './Routes/routePath'
 
 export default class App extends Component {
   constructor(props) {
@@ -14,9 +16,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <KtpInput
-          label="N.I.K"
-        />
-      </div>);
+        <Header />
+        <RoutePath />
+      </div>
+    );
   }
 }
