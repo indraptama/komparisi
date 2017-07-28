@@ -3,6 +3,7 @@ html {
   font-family: 'Roboto';
   background-color: #fcfcfc;
   overflow-y: scroll;
+  background-color: #cfd8dc;
 }
 body {
   margin: 0;

@@ -70,12 +70,12 @@ export default class KtpInput extends Component {
         <Paper style={Style.Paper}>
           <ul className="list-unstyled">
             <li className="mb2"><h6 className="f5 gray">Identitas Pribadi</h6></li>
-            <li><TextField floatingLabelText="NIK" type="number" getChange={this.nikChange} Placeholder="NIK" fullWidth/></li>
-            <li><TextField floatingLabelText="Nama Lengkap" type="text" getChange={this.fullNameChange} fullWidth/></li>
-            <li><TextField floatingLabelText="Tempat Lahir" type="text" getChange={this.bornPlaceChange} fullWidth/></li>
-            <li><TextField floatingLabelText="Tanggal Lahir" type="text" getChange={this.bornDateChange} fullWidth/></li>
+            <li><InputLabel label="NIK" type="number" getChange={this.nikChange} Placeholder="NIK" fullWidth/></li>
+            <li><InputLabel label="Nama Lengkap" type="text" getChange={this.fullNameChange} fullWidth/></li>
+            <li><InputLabel label="Tempat Lahir" type="text" getChange={this.bornPlaceChange} fullWidth/></li>
+            <li><InputLabel label="Tanggal Lahir" type="text" getChange={this.bornDateChange} /></li>
 
-            <li className="flexs items-start mt3">
+            <li className="flex items-start mt3">
               <div className="w-30 mt1">Jenis Kelamin</div>
               <div className="w-70">
                 <RadioButtonGroup name="sex" onChange={this.sexChange}>
@@ -151,7 +151,7 @@ const Style = {
     display: 'inline-block'
   },
   Paper: {
-    maxWidth: 360,
+    maxWidth: 480,
     padding: '1.5rem',
     margin: '1.5rem auto',
   }
