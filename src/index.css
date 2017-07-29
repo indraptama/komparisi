@@ -1,11 +1,29 @@
 html {
   font-size: 87.5%;
   font-family: 'Roboto';
-  background-color: #fcfcfc;
   overflow-y: scroll;
   background-color: #cfd8dc;
 }
 body {
   margin: 0;
   padding: 0;
+}
+
+.sans {
+  font-family: 'roboto'
+}
+
+
+/*
+  BORDER MODIFER
+*/
+
+.ba-none {
+  border: none;
+}
+.ba-none:focus {
+  outline: 0;
+}
+.bl-none {
+  border-left: none
 }

@@ -1,34 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import anime from 'animejs'
 
 // Import Components
-import InputLabel from '../../Moleculs/InputLabel'
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
-import Paper from 'material-ui/Paper';
+import TabelInputItem from '../../Moleculs/TabelInputItem'
+import TabelSelectItem from '../../Moleculs/TabelSelectItem'
+import TabelRadioItem from '../../Moleculs/TabelRadioItem'
 
-export default class KtpInput extends Component {
+
+export default class KtpInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      nik: this.props.nik,
 
-    // Register Action
-    name: this.props.name,
-    bornPlace: this.props.bornPlace,
-    bornDate: this.props.bornDate,
-    sex: this.props.sex,
-    streetAddress: this.props.streetAddress,
-    rt: this.props.rt,
-    rw: this.props.rw,
-    kelurahanType: this.props.kelurahanType,
-    kelurahanName: this.props.kelurahanName,
-    kecamatan: this.props.kecamatan,
-    cityType: this.props.cityType,
-    cityName: this.props.cityName,
-    martialStatus: this.props.martialStatus,
-    occupation: this.props.occupation,
-  }
+    this.state = {
+      nik: '',
+      name: '',
+      bornPlace: '',
+      bornDate: '',
+      sex: '',
+      streetAddress: '',
+      rt: '',
+      rw: '',
+      kelurahanType: '',
+      kelurahanName: '',
+      kecamatan: '',
+      cityType: '',
+      cityName: '',
+      martialStatus: '',
+      occupation: '',
+    }
+
+  // Register Action
     this.nikChange = this.nikChange.bind(this);
     this.fullNameChange = this.fullNameChange.bind(this);
     this.bornPlaceChange = this.bornPlaceChange.bind(this);
@@ -44,107 +45,125 @@ export default class KtpInput extends Component {
     this.cityNameChange = this.cityNameChange.bind(this);
     this.martialStatusChange = this.martialStatusChange.bind(this);
     this.occupationChange = this.occupationChange.bind(this);
+    // this.onFormFocus = this.onFormFocus.bind(this);
   }
 
   // State Updater
-  nikChange(value) {this.setState({nik: value})}
-  fullNameChange(value) {this.setState({name: value})}
-  bornPlaceChange(value) {this.setState({bornPlace: value})}
-  bornDateChange(value) {this.setState({bornDate: value})}
-  sexChange(event, value) {this.setState({sex: value})}
-  streetAddressChange(value) {this.setState({streetAddress: value})}
-  rtChange(value) {this.setState({rt: value})}
-  rwChange(value) {this.setState({rw: value})}
-  kelurahanTypeChange(event, value) {this.setState({kelurahanType: value})}
-  kelurahanNameChange(value) {this.setState({kelurahanName: value})}
-  kecamatanChange(value) {this.setState({kecamatan: value})}
-  cityTypeChange(event, value) {this.setState({cityType: value})}
-  cityNameChange(value) {this.setState({cityName: value})}
-  martialStatusChange(event, value) {this.setState({martialStatus: value})}
-  occupationChange(value) {this.setState({occupation: value})}
+  nikChange(evt) {this.setState({nik: evt.target.value})}
+  fullNameChange(evt) {this.setState({name: evt.target.value})}
+  bornPlaceChange(evt) {this.setState({bornPlace: evt.target.value})}
+  bornDateChange(evt) {this.setState({bornDate: evt.target.value})}
+  sexChange(evt) {this.setState({sex: evt.target.value})}
+  streetAddressChange(evt) {this.setState({streetAddress: evt.target.value})}
+  rtChange(evt) {this.setState({rt: evt.target.value})}
+  rwChange(evt) {this.setState({rw: evt.target.value})}
+  kelurahanTypeChange(evt) {this.setState({kelurahanType: evt.target.value})}
+  kelurahanNameChange(evt) {this.setState({kelurahanName: evt.target.value})}
+  kecamatanChange(evt) {this.setState({kecamatan: evt.target.value})}
+  cityTypeChange(evt) {this.setState({cityType: evt.target.value})}
+  cityNameChange(evt) {this.setState({cityName: evt.target.value})}
+  martialStatusChange(evt) {this.setState({martialStatus: evt.target.value})}
+  occupationChange(evt) {this.setState({occupation: evt.target.value})}
+
+
+
 
   render() {
     return (
-      <div>
-
-        <Paper style={Style.Paper}>
-          <ul className="list-unstyled">
-            <li className="mb2"><h6 className="f5 gray">Identitas Pribadi</h6></li>
-            <li><TextField floatingLabelText="NIK" type="number" getChange={this.nikChange} Placeholder="NIK" fullWidth/></li>
-            <li><TextField floatingLabelText="Nama Lengkap" type="text" getChange={this.fullNameChange} fullWidth/></li>
-            <li><TextField floatingLabelText="Tempat Lahir" type="text" getChange={this.bornPlaceChange} fullWidth/></li>
-            <li><TextField floatingLabelText="Tanggal Lahir" type="text" getChange={this.bornDateChange} fullWidth/></li>
-
-            <li className="flexs items-start mt3">
-              <div className="w-30 mt1">Jenis Kelamin</div>
-              <div className="w-70">
-                <RadioButtonGroup name="sex" onChange={this.sexChange}>
-                  <RadioButton value="male" label="Laki-laki" />
-                  <RadioButton value="female" label="Perempuan" />
-                </RadioButtonGroup>
-              </div>
-            </li>
-          </ul>
-        </Paper>
-
-
-<ul>
-          <li className="pt5 mb2"><h6 className="f5 gray">Alamat Tempat Tinggal</h6></li>
-          <li><InputLabel label="Jalan" type="text" getChange={this.streetAddressChange} fullWidth/></li>
-          <li><InputLabel label="RT" type="number" getChange={this.rtChange} /></li>
-          <li><InputLabel label="RW" type="number" getChange={this.rwChange} /></li>
-
-          <li className="flex items-start mt3">
-            <div className="w-30 mt1">Desa / Kelurahan</div>
-            <div className="w-70">
-              <RadioButtonGroup name="kelurahanType" className="flex" onChange={this.kelurahanTypeChange}>
-                <RadioButton value="desa" label="Desa" style={Style.radioItem}/>
-                <RadioButton value="kelurahan" label="Kelurahan" style={Style.radioItem}/>
-              </RadioButtonGroup>
-              <div className="">
-                <TextField hintText="Nama Desa / Kelurahan" fullWidth onChange={this.kelurahanNameChange} />
+      <div className="mw7 center pa4 bg-white">
+        <div className="mb4">
+          <h3 className="mb2 black-50 f5">Data Pribadi</h3>
+          <div className="flex ba b--black-30">
+            <div className="w-third br b--black-30">
+            </div>
+            <div className="w-two-thirds">
+              <TabelInputItem label="Nomor Induk Kependudukan" isNumeric getValue={this.nikChange}/>
+              <span className="db bb b--black-30"></span>
+              <TabelInputItem label="Nama Lengkap" />
+              <span className="db bb b--black-30"></span>
+              <TabelInputItem label="Kota Kelahiran"/>
+              <span className="db bb b--black-30"></span>
+              <div className="flex">
+                <div className="w-50 br b--black-30">
+                  <TabelInputItem label="Tanggal Lahir" isNumeric/>
+                </div>
+                <div className="w-50">
+                  <TabelRadioItem name="sex" label="Jenis Kelamin" dataRadio={DataSex} getValue={this.sexChange}/>
+                </div>
               </div>
             </div>
-          </li>
-
-          <li><InputLabel label="Kecamatan" type="text" getChange={this.kecamatanChange} fullWidth/></li>
-
-          <li className="flex items-start mt3">
-            <div className="w-30 mt1">Kota / Kabupaten</div>
-            <div className="w-70">
-              <RadioButtonGroup name="cityType" className="flex" onChange={this.cityTypeChange}>
-                <RadioButton value="kabupaten" label="Kabupaten" style={Style.radioItem}/>
-                <RadioButton value="kota" label="Kota" style={Style.radioItem}/>
-              </RadioButtonGroup>
-              <div className="">
-                <TextField hintText="Nama Kota / Kabupaten" fullWidth onChange={this.cityNameChange} />
-              </div>
-            </div>
-          </li>
-
-          <li className="pt5 mb2"><h6 className="f5 gray">Status Perkawinan & Pekerjaan</h6></li>
-
-          <li className="flex items-start mt3">
-            <div className="w-30 mt1">Status Pekawinan</div>
-            <div className="w-70">
-              <RadioButtonGroup name="martialStatus" onChange={this.martialStatusChange}>
-                <RadioButton value="single" label="Belum Menikah" />
-                <RadioButton value="marriage" label="Menikah" />
-                <RadioButton value="devorced" label="Cerai Hidup" />
-                <RadioButton value="widowed" label="Cerai Mati" />
-              </RadioButtonGroup>
-            </div>
-          </li>
-
-          <li><InputLabel label="Pekerjaan" type="text" getChange={this.occupationChange} fullWidth/></li>
-        </ul>
-        <div className="pt4 tr">
-          <FlatButton label="Simpan identitas"  primary={true} onTouchTap={ e => console.log(this.state) } />
+          </div>
         </div>
+
+        <div className="mb4">
+          <h3 className="mb2 black-50 f5">Alamat</h3>
+          <div className="ba b--black-30">
+            <div className="w-100">
+              <div className="flex">
+                <div className="w-two-thirds">
+                  <TabelInputItem label="Jalan"/>
+                </div>
+                <div className="flex w-third">
+                  <div className="w-50 bl br b--black-30">
+                    <TabelInputItem label="RT" isNumeric/>
+                  </div>
+                  <div className="w-50">
+                    <TabelInputItem label="RW" isNumeric/>
+                  </div>
+                </div>
+              </div>
+
+              <span className="db bt b--black-30"></span>
+
+              <div className="flex b--black-30">
+                <div className="w-third br b--black-30">
+                  <TabelSelectItem label="Jenis administrasi" dataOption={DataDesa}/>
+                </div>
+                <div className="w-two-thirds">
+                  <TabelInputItem label="Desa / Kelurahan" />
+                </div>
+              </div>
+
+              <span className="db bt b--black-30"></span>
+
+              <div className="w-100">
+                <TabelInputItem label="Kecamatan" />
+              </div>
+
+              <span className="db bt b--black-30"></span>
+
+              <div className="flex b--black-30">
+                <div className="w-third br b--black-30">
+                  <TabelSelectItem label="Jenis administrasi" dataOption={DataKota}/>
+                </div>
+                <div className="w-two-thirds">
+                  <TabelInputItem label="Kota / Kabupaten" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="div">
+          <h3 className="mb2 black-50 f5">Status Pernikahan & Pekerjaan</h3>
+          <div className="ba b--black-30">
+            <div className="">
+              <TabelRadioItem name="martialStatus" label="Status Perkawinan" dataRadio={DataMartiaStatus} getValue={this.martialStatusChange}/>
+            </div>
+            <span className="db bt b--black-30"></span>
+            <TabelInputItem label="Pekerjaan"/>
+          </div>
+        </div>
+
+
       </div>
     );
   }
 }
+
+
+
+
 
 const Style = {
   radioItem: {
@@ -156,3 +175,62 @@ const Style = {
     margin: '1.5rem auto',
   }
 }
+
+
+const DataMartiaStatus = [
+  {
+    value: 'single',
+    label: 'Belum Menikah',
+    name: 'single'
+  },
+  {
+    value: 'marriage',
+    label: 'Menikah',
+    name: 'marriage'
+  },
+  {
+    value: 'devorced',
+    label: 'Cerai Hidup',
+    name: 'devorced'
+  },
+  {
+    value: 'widowed',
+    label: 'Cerai Mati',
+    name: 'widowed'
+  },
+]
+
+const DataSex = [
+  {
+    value: 'man',
+    label: 'Laki-laki',
+    name: 'single'
+  },
+  {
+    value: 'female',
+    label: 'Perempuan',
+    name: 'marriage'
+  }
+]
+
+const DataDesa = [
+  {
+    value: 'desa',
+    label: 'Desa'
+  },
+  {
+    value: 'kelurahan',
+    label: 'Kelurahan'
+  }
+]
+
+const DataKota = [
+  {
+    value: 'kota',
+    label: 'Kota',
+  },
+  {
+    value: 'kabupaten',
+    label: 'Kabupaten',
+  }
+]
