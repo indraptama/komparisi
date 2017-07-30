@@ -9,10 +9,6 @@ function TabelRadioItem(props) {
 
   let bgFocus = null
 
-  function NumericOnly(e) {
-    inputNumericOnly(e)
-  }
-
   function onInputFocus(e) {
     inputAnimation(bgFocus)
   }
@@ -24,18 +20,19 @@ function TabelRadioItem(props) {
 
   return(
     <div className="w-100 pa3 relative db">
-      <div className="z-2 relative">
+      <div className="z-2 relative" onFocus={onInputFocus} onBlur={onInputBlur}>
         <span className="f7 fw6 ttc black-50 db mb1">{props.label}</span>
         <div className="flex w-100">
           {props.dataRadio.map(radio => (
             <RadioItem
-              onFocus={onInputFocus}
-              onBlur={onInputBlur}
               key={radio.name}
-              label={radio.label}
+              icon={radio.icon}
               radioName={props.name}
               value={radio.value}
               getValue={props.getValue}
+              label={radio.label}
+              hasIcon = {props.hasIcon}
+              alt={radio.name}
               />
           ))}
         </div>
@@ -57,21 +54,15 @@ function RadioItem(props) {
       name={props.radioName}
       onClick={props.getValue}
     />
-    <span className="db ml2 w-100 black-50">{props.label}</span>
+    <div className="db ml2 w-100 black-50">
+      {props.hasIcon ? <img src={props.icon} alt={props.name}/> : <span>{props.label}</span> }
+    </div>
     </label>
   )
 }
 
 
-
-
-
-function inputNumericOnly(event) {
-  if(event.charCode !== 13 && (event.charCode < 48 || event.charCode > 58)) {
-    event.preventDefault();
-  }
-}
-
+// Animation
 
 function inputAnimation(elem) {
    anime({
@@ -92,36 +83,5 @@ function inputAnimationOut(elem) {
     duration: 250,
   });
 }
-
-const Style = {
-  labelContainer: {
-    display: 'flex',
-    width: '100%',
-    padding: '1rem',
-  },
-  labelText: {
-
-  },
-  inputField: {
-
-  },
-}
-
-// {/* <select  type={props.type}
-//         name={props.name}
-//         defaultValue={props.defaultValue}
-//         data-isNumeric ={props.isNumeric}
-//         className="input-reset db pv1 ba-none w-100 bg-transparent sans"
-//         onChange={props.getValue}
-//         style={Style.input}
-//         onKeyPress={props.isNumeric ? NumericOnly : '' }
-//         onFocus={onInputFocus}
-//         onBlur={onInputBlur}
-// >
-//
-// </select> */}
-
-
-
 
 export default TabelRadioItem;

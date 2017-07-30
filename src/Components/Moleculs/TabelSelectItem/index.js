@@ -1,5 +1,6 @@
 import React from 'react'
 import anime from 'animejs'
+import downarrow from '../../Icons/downarrow.svg';
 
 function TabelSelectItem(props) {
 
@@ -8,10 +9,6 @@ function TabelSelectItem(props) {
   // https://facebook.github.io/react/docs/refs-and-the-dom.html
 
   let bgFocus = null
-
-  function NumericOnly(e) {
-    inputNumericOnly(e)
-  }
 
   function onInputFocus(e) {
     inputAnimation(bgFocus)
@@ -23,17 +20,16 @@ function TabelSelectItem(props) {
 
 
   return(
-    <label className="w-100 pa3 relative db">
+    <label className="w-100 pv3 relative db">
       <div className="z-2 relative">
-        <span className="f7 fw6 ttc black-50 db mb1">{props.label}</span>
-        <select  type={props.type}
+        <span className="f7 fw6 ttc black-50 db mb1 ph3">{props.label}</span>
+        <select type={props.type}
                 name={props.name}
                 defaultValue={props.defaultValue}
                 data-isNumeric ={props.isNumeric}
-                className="input-reset db pv1 ba-none w-100 bg-transparent sans"
+                className="input-reset db pv1 ba-none w-100 bg-transparent sans ph3"
                 onChange={props.getValue}
                 style={Style.input}
-                onKeyPress={props.isNumeric ? NumericOnly : '' }
                 onFocus={onInputFocus}
                 onBlur={onInputBlur}
         >
@@ -41,6 +37,7 @@ function TabelSelectItem(props) {
           <SelectOption key={option.value} value={option.value} label={option.label}/>
         ))}
         </select>
+        <span className="absolute w1 right-0" style={Style.arrow}><img src={downarrow} alt="" /></span>
       </div>
       <div className="absolute w-100 h-100 absolute--fill z-1 bg-white o-0" ref={(div) => {bgFocus = div}}></div>
 
@@ -52,22 +49,13 @@ function TabelSelectItem(props) {
 function SelectOption(props) {
   return(
     <option
-
-      className="sans ph1 pv2"
+      className="sans"
       value={props.value}>
       {props.label}
     </option>
   )
 }
 
-
-
-
-function inputNumericOnly(event) {
-  if(event.charCode !== 13 && (event.charCode < 48 || event.charCode > 58)) {
-    event.preventDefault();
-  }
-}
 
 
 function inputAnimation(elem) {
@@ -91,17 +79,12 @@ function inputAnimationOut(elem) {
 }
 
 const Style = {
-  labelContainer: {
-    display: 'flex',
-    width: '100%',
-    padding: '1rem',
-  },
-  labelText: {
-
-  },
-  inputField: {
-
-  },
+  arrow: {
+    top: '50%',
+    right: '1rem',
+    width: '1rem',
+    opacity: '.5',
+  }
 }
 
 

@@ -1,10 +1,15 @@
 import React from 'react';
 import anime from 'animejs'
+import Button from 'material-ui/Button';
 
 // Import Components
 import TabelInputItem from '../../Moleculs/TabelInputItem'
 import TabelSelectItem from '../../Moleculs/TabelSelectItem'
 import TabelRadioItem from '../../Moleculs/TabelRadioItem'
+
+// Icons
+import MaleIcon from '../../Icons/male.svg';
+import FemaleIcon from '../../Icons/female.svg';
 
 
 export default class KtpInput extends React.Component {
@@ -13,19 +18,19 @@ export default class KtpInput extends React.Component {
 
     this.state = {
       nik: '',
-      name: '',
+      dullName: '',
       bornPlace: '',
       bornDate: '',
-      sex: '',
+      sex: 'male',
       streetAddress: '',
       rt: '',
       rw: '',
-      kelurahanType: '',
+      kelurahanType: 'desa',
       kelurahanName: '',
       kecamatan: '',
-      cityType: '',
+      cityType: 'kabupaten',
       cityName: '',
-      martialStatus: '',
+      martialStatus: 'single',
       occupation: '',
     }
 
@@ -49,8 +54,8 @@ export default class KtpInput extends React.Component {
   }
 
   // State Updater
-  nikChange(evt) {this.setState({nik: evt.target.value})}
-  fullNameChange(evt) {this.setState({name: evt.target.value})}
+  nikChange(evt) {this.setState({nik: parseFloat(evt.target.value)})}
+  fullNameChange(evt) {this.setState({fullName: evt.target.value})}
   bornPlaceChange(evt) {this.setState({bornPlace: evt.target.value})}
   bornDateChange(evt) {this.setState({bornDate: evt.target.value})}
   sexChange(evt) {this.setState({sex: evt.target.value})}
@@ -66,29 +71,49 @@ export default class KtpInput extends React.Component {
   occupationChange(evt) {this.setState({occupation: evt.target.value})}
 
 
-
+  onSubmitHandler(evt) {
+    const dataKtp = {
+      _id: this.state.nik,
+      nik: this.state.nik,
+      fullName: this.state.fullName,
+      bornPlace: this.state.bornPlace,
+      bornDate: this.state.bornDate,
+      sex: this.state.sex,
+      streetAddress: this.state.streetAddress,
+      rt: this.state.rt,
+      rw: this.state.rw,
+      kelurahanName: this.state.kelurahanName,
+      kecamatan: this.state.kecamatan,
+      cityName: this.state.cityName,
+      martialStatus: this.state.martialStatus,
+      occupation: this.state.occupation,
+    }
+    evt.preventDefault()
+    this.props.getKTPData(dataKtp);
+  }
 
   render() {
     return (
-      <div className="mw7 center pa4 bg-white">
+      <form onSubmit={this.onSubmitHandler.bind(this)}>
+      <div className="mw8 center pa4 bg-white">
         <div className="mb4">
           <h3 className="mb2 black-50 f5">Data Pribadi</h3>
-          <div className="flex ba b--black-30">
-            <div className="w-third br b--black-30">
+          <div className="flex ba b--black-20">
+            <div className="w-third br b--black-20">
             </div>
             <div className="w-two-thirds">
               <TabelInputItem label="Nomor Induk Kependudukan" isNumeric getValue={this.nikChange}/>
-              <span className="db bb b--black-30"></span>
-              <TabelInputItem label="Nama Lengkap" />
-              <span className="db bb b--black-30"></span>
-              <TabelInputItem label="Kota Kelahiran"/>
-              <span className="db bb b--black-30"></span>
+              <span className="db bb b--black-20"></span>
+              <TabelInputItem label="Nama Lengkap" getValue={this.fullNameChange}/>
+              <span className="db bb b--black-20"></span>
+              <TabelInputItem label="Kota Kelahiran" getValue={this.bornPlaceChange}/>
+              <span className="db bb b--black-20"></span>
               <div className="flex">
-                <div className="w-50 br b--black-30">
-                  <TabelInputItem label="Tanggal Lahir" isNumeric/>
+                <div className="w-50 br b--black-20">
+                  <TabelInputItem label="Tanggal Lahir" isNumeric getValue={this.bornDateChange}/>
                 </div>
                 <div className="w-50">
-                  <TabelRadioItem name="sex" label="Jenis Kelamin" dataRadio={DataSex} getValue={this.sexChange}/>
+                  <TabelRadioItem name="sex" label="Jenis Kelamin" dataRadio={DataSex} getValue={this.sexChange} hasIcon/>
                 </div>
               </div>
             </div>
@@ -97,66 +122,69 @@ export default class KtpInput extends React.Component {
 
         <div className="mb4">
           <h3 className="mb2 black-50 f5">Alamat</h3>
-          <div className="ba b--black-30">
+          <div className="ba b--black-20">
             <div className="w-100">
               <div className="flex">
                 <div className="w-two-thirds">
-                  <TabelInputItem label="Jalan"/>
+                  <TabelInputItem label="Jalan" getValue={this.streetAddressChange}/>
                 </div>
                 <div className="flex w-third">
-                  <div className="w-50 bl br b--black-30">
-                    <TabelInputItem label="RT" isNumeric/>
+                  <div className="w-50 bl br b--black-20">
+                    <TabelInputItem label="RT" isNumeric getValue={this.rtChange}/>
                   </div>
                   <div className="w-50">
-                    <TabelInputItem label="RW" isNumeric/>
+                    <TabelInputItem label="RW" isNumeric getValue={this.rwChange}/>
                   </div>
                 </div>
               </div>
 
-              <span className="db bt b--black-30"></span>
+              <span className="db bt b--black-20"></span>
 
-              <div className="flex b--black-30">
-                <div className="w-third br b--black-30">
-                  <TabelSelectItem label="Jenis administrasi" dataOption={DataDesa}/>
+              <div className="flex b--black-20">
+                <div className="w-third br b--black-20">
+                  <TabelSelectItem label="Jenis administrasi" defaultValue={this.state.kelurahanType} dataOption={DataDesa} getValue={this.kelurahanTypeChange}/>
                 </div>
                 <div className="w-two-thirds">
-                  <TabelInputItem label="Desa / Kelurahan" />
+                  <TabelInputItem label="Nama Desa / Kelurahan" getValue={this.kelurahanNameChange}/>
                 </div>
               </div>
 
-              <span className="db bt b--black-30"></span>
+              <span className="db bt b--black-20"></span>
 
               <div className="w-100">
-                <TabelInputItem label="Kecamatan" />
+                <TabelInputItem label="Kecamatan" getValue={this.kecamatanChange}/>
               </div>
 
-              <span className="db bt b--black-30"></span>
+              <span className="db bt b--black-20"></span>
 
-              <div className="flex b--black-30">
-                <div className="w-third br b--black-30">
-                  <TabelSelectItem label="Jenis administrasi" dataOption={DataKota}/>
+              <div className="flex b--black-20">
+                <div className="w-third br b--black-20">
+                  <TabelSelectItem label="Jenis administrasi" defaultValue={this.state.cityType} dataOption={DataKota} getValue={this.cityTypeChange}/>
                 </div>
                 <div className="w-two-thirds">
-                  <TabelInputItem label="Kota / Kabupaten" />
+                  <TabelInputItem label="Nama Kota / Kabupaten" getValue={this.cityNameChange}/>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="div">
+        <div className="mb4">
           <h3 className="mb2 black-50 f5">Status Pernikahan & Pekerjaan</h3>
-          <div className="ba b--black-30">
+          <div className="ba b--black-20">
             <div className="">
               <TabelRadioItem name="martialStatus" label="Status Perkawinan" dataRadio={DataMartiaStatus} getValue={this.martialStatusChange}/>
             </div>
-            <span className="db bt b--black-30"></span>
-            <TabelInputItem label="Pekerjaan"/>
+            <span className="db bt b--black-20"></span>
+            <TabelInputItem label="Pekerjaan" getValue={this.occupationChange}/>
           </div>
         </div>
 
-
+        <div className="">
+          <Button type="sumbit">Simpan Data</Button>
+        </div>
       </div>
+    </form>
     );
   }
 }
@@ -200,16 +228,19 @@ const DataMartiaStatus = [
   },
 ]
 
+
 const DataSex = [
   {
-    value: 'man',
+    value: 'male',
     label: 'Laki-laki',
-    name: 'single'
+    name: 'male',
+    icon: MaleIcon,
   },
   {
     value: 'female',
     label: 'Perempuan',
-    name: 'marriage'
+    name: 'female',
+    icon: FemaleIcon,
   }
 ]
 

@@ -9,6 +9,7 @@ function Header(props) {
         <nav className>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/newktp'>New KTP</NavLink>
+          <NavLink to='/komparisi'>Komparisi</NavLink>
         </nav>
       </div>
     </header>
