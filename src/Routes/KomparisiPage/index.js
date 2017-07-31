@@ -1,26 +1,18 @@
 import React from 'react';
+import _ from 'lodash';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import KtpInput from '../../Components/Organisms/KtpInput'
 import KomparisiResult from '../../Components/Organisms/KomparisiResult'
 
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from 'material-ui/Dialog';
+import Dialog, { DialogContent } from 'material-ui/Dialog';
 
 
 export default class KomparisiPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pihak_1: {
-        320409: {
-          fullName: 'indra pratama'
-        }
-      },
+      pihak_1: {},
       pihak_2: {},
       dialogOpen: false,
     }
@@ -35,7 +27,9 @@ export default class KomparisiPage extends React.Component {
   }
 
   addPihak_2(e) {
-    console.log(this.state);
+    const PIHAK_1 = _.size(this.state.pihak_1);
+    console.log(this.state)
+    console.log(PIHAK_1);
   }
 
   dialogRequestClose() {
@@ -64,6 +58,20 @@ export default class KomparisiPage extends React.Component {
 
   render() {
     const Pihak_1 = this.state.pihak_1;
+
+    const komparisiPihak1 = Object.keys(Pihak_1).map(key => {
+      if (key.length >= 1) {
+        return(
+          <li className="mb4"><KomparisiResult dataKTP={Pihak_1[key]} /></li>
+        )
+      }
+      return (
+        <h2>data Penghadap 1 tidak tersedia</h2>
+      )
+    });
+
+
+
     return (
       <div className="KomparisiPage">
         <div className="flex">
@@ -93,11 +101,7 @@ export default class KomparisiPage extends React.Component {
             </div>
           </div>
           <div className="minh-100vh w-50 bg-white pa5 shadow-1">
-            { Object.keys(Pihak_1).reverse().map(key => {
-              return (
-                <KomparisiResult key={Pihak_1[key].nik} dataKTP={Pihak_1[key]} />
-              )
-            })}
+            <ul>{ komparisiPihak1 }</ul>
           </div>
         </div>
 
