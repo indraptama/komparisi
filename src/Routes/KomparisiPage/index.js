@@ -62,7 +62,7 @@ export default class KomparisiPage extends React.Component {
     const komparisiPihak1 = Object.keys(Pihak_1).map(key => {
       if (key.length >= 1) {
         return(
-          <li className="mb4"><KomparisiResult dataKTP={Pihak_1[key]} /></li>
+          <li className="mb4" key={Pihak_1[key].nik}><KomparisiResult dataKTP={Pihak_1[key]} /></li>
         )
       }
       return (
@@ -108,8 +108,7 @@ export default class KomparisiPage extends React.Component {
 
       <Dialog open={this.state.dialogOpen}
               onRequestClose={this.dialogRequestClose}
-              maxWidth='md'
-              >
+              maxWidth='md'>
         <DialogContent>
           <KtpInput getKTPData={this.addNewKtpDataPihak_1.bind(this)}/>
         </DialogContent>

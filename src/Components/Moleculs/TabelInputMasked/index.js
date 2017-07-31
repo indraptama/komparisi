@@ -2,7 +2,7 @@ import React from 'react'
 import anime from 'animejs'
 import MaskedInput from 'react-maskedinput';
 
-function TabelInputItem(props) {
+function TabelInputMasked(props) {
 
   // For using refs on Stateless function
   // bgFocus must be declared here so the ref callback can refer to it
@@ -27,7 +27,9 @@ function TabelInputItem(props) {
     <label className="w-100 pa3 relative db">
       <div className="z-2 relative">
         <span className="f7 fw6 ttc black-50 db mb1">{props.label}</span>
-        <input  type={props.type}
+        <MaskedInput
+                mask={props.pattern}
+                type={props.type}
                 name={props.name}
                 defaultValue={props.defaultValue}
                 data-isNumeric ={props.isNumeric}
@@ -90,4 +92,4 @@ const Style = {
 
 
 
-export default TabelInputItem;
+export default TabelInputMasked;

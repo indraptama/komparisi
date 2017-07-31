@@ -2,8 +2,10 @@ import React from 'react';
 import anime from 'animejs'
 import Button from 'material-ui/Button';
 
+
 // Import Components
 import TabelInputItem from '../../Moleculs/TabelInputItem'
+import TabelInputMasked from '../../Moleculs/TabelInputMasked'
 import TabelSelectItem from '../../Moleculs/TabelSelectItem'
 import TabelRadioItem from '../../Moleculs/TabelRadioItem'
 
@@ -110,7 +112,8 @@ export default class KtpInput extends React.Component {
               <span className="db bb b--black-20"></span>
               <div className="flex">
                 <div className="w-50 br b--black-20">
-                  <TabelInputItem label="Tanggal Lahir" isNumeric getValue={this.bornDateChange}/>
+                  <TabelInputMasked pattern="11-11-1111" label="tanggal lahir" getValue={this.bornDateChange} />
+
                 </div>
                 <div className="w-50">
                   <TabelRadioItem name="sex" label="Jenis Kelamin" dataRadio={DataSex} getValue={this.sexChange} hasIcon/>
@@ -265,3 +268,5 @@ const DataKota = [
     label: 'Kabupaten',
   }
 ]
+
+// <TabelInputItem label="Tanggal Lahir" isNumeric getValue={this.bornDateChange}/>
