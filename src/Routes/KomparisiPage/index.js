@@ -58,7 +58,6 @@ export default class KomparisiPage extends React.Component {
 
   render() {
     const Pihak_1 = this.state.pihak_1;
-
     const komparisiPihak1 = Object.keys(Pihak_1).map(key => {
       if (key.length >= 1) {
         return(
@@ -70,8 +69,6 @@ export default class KomparisiPage extends React.Component {
       )
     });
 
-
-
     return (
       <div className="KomparisiPage">
         <div className="flex">
@@ -79,7 +76,7 @@ export default class KomparisiPage extends React.Component {
             <div className="mw6 center">
 
               <div className="penghadap_1 mb6">
-                <h2 className="f5 pv3 bb b--black-20">Penghadap 1</h2>
+                <h2 className="f5 pv3 bb b--black-20">Pihak Pertama</h2>
                 <div className="penghadap_1__list mb3">
 
                 </div>
@@ -89,7 +86,7 @@ export default class KomparisiPage extends React.Component {
               </div>
 
               <div className="penghadap_2">
-                <h2 className="f5 pv3 bb b--black-20">Penghadap 2</h2>
+                <h2 className="f5 pv3 bb b--black-20">Pihak Kedua</h2>
                 <div className="penghadap_2__list mb3">
 
                 </div>

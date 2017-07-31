@@ -132,10 +132,10 @@ export default class KtpInput extends React.Component {
                   <TabelInputItem label="Jalan" getValue={this.streetAddressChange}/>
                 </div>
                 <div className="flex w-third">
-                  <div className="w-50 bl br b--black-20">
+                  <div className="w-50 bl b--black-20">
                     <TabelInputItem label="RT" isNumeric getValue={this.rtChange}/>
                   </div>
-                  <div className="w-50">
+                  <div className="w-50 bl b--black-20">
                     <TabelInputItem label="RW" isNumeric getValue={this.rwChange}/>
                   </div>
                 </div>
