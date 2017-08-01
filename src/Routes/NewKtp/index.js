@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import KtpInput from '../../Components/Organisms/KtpInput'
+import KtpInputV2 from '../../Components/Organisms/KtpInputV2'
 
 export default class NewKtp extends Component {
 
   render() {
-    return (<div>
-      <KtpInput />
+    return (
+    <div>
+      <KtpInputV2 />
     </div>);
   }
 }
