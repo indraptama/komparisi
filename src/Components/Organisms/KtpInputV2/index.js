@@ -4,10 +4,7 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import Input from 'material-ui/Input';
-import InputLabel from 'material-ui/Input/InputLabel';
-import FormControl from 'material-ui/Form/FormControl';
-import FormHelperText from 'material-ui/Form/FormHelperText';
+import TextField from 'material-ui/TextField';
 
 
 // Import Components
@@ -105,16 +102,43 @@ class KtpInputV2 extends React.Component {
         <Card className={classes.Card}>
           <div className={classes.Card_cover}></div>
           <div className={classes.Card_content}>
+            <CardContent>
+              <label className="db mb3">
+                <span className="db mb2 f7">NIK</span>
+                <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+              </label>
+              <label className="db mb3">
+                <span className="db mb2 f7">Nama Lengkap</span>
+                <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+              </label>
 
-          <CardContent>
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="name" className={classes.Label}>Name</InputLabel>
-              <Input id="name" value={this.state.name} onChange={this.handleChange} className={classes.Input} fullWidth={true}/>
-            </FormControl>
-          </CardContent>
-          <CardActions>
-            <Button dense>Learn More</Button>
-          </CardActions>
+              <div className={classes.flex}>
+                <label className="db mb3 mr3 w-70">
+                  <span className="db mb2 f7">Kota Kelahiran</span>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+                <label className="db mb3 w-30">
+                  <span className="db mb2 f7">Tanggal lahir</span>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+              </div>
+
+              <div className={classes.flex}>
+                <label className="db mb3 mr3 w-60">
+                  <span className="db mb2 f7">Alamat</span>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+                <label className="db mb3 mr3 w-20">
+                  <span className="db mb2 f7">RT</span>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+                <label className="db mb3 w-20">
+                  <span className="db mb2 f7">RW</span>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+              </div>
+
+            </CardContent>
           </div>
         </Card>
       </form>
@@ -125,7 +149,7 @@ class KtpInputV2 extends React.Component {
 
 const styleSheet = createStyleSheet(theme => ({
   Card: {
-    width: 800,
+    width: 640,
     margin: '0 auto',
     display: 'flex',
   },
@@ -133,20 +157,27 @@ const styleSheet = createStyleSheet(theme => ({
     width: 256,
     backgroundColor: 'teal',
   },
+  Card_content: {
+    width: '100%'
+  },
   textField: {
-    width: 256,
-    marginLeft: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
+  },
+  flex: {
+    display: 'flex',
   },
   formControl: {
     margin: theme.spacing.unit,
+    width: '100%',
   },
   Label: {
     top: -2,
   },
   Input: {
     paddingBottom: 8,
-  }
+    width: '100%',
+  },
+
 }));
 
 

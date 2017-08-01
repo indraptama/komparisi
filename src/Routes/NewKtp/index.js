@@ -5,7 +5,7 @@ export default class NewKtp extends Component {
 
   render() {
     return (
-    <div>
+    <div className="min-vh100 flex items-center minh-100vh justify-center">
       <KtpInputV2 />
     </div>);
   }

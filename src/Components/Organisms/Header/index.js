@@ -40,7 +40,7 @@ class Header extends React.Component {
     return (
       <div>
       <header>
-        <AppBar className = {classes.mainHeader}>
+        <AppBar className = {classes.root}>
           <Toolbar>
            <IconButton color="contrast" aria-label="Menu" onClick={this.handleLeftOpen.bind(this)}>
              <MenuIcon />
@@ -72,9 +72,10 @@ class Header extends React.Component {
 
 
 const styleSheet = createStyleSheet({
-  mainHeader: {
+  root: {
     display: 'flex',
-    backgroundColor: "teal",
+    backgroundColor: "#2196f3",
+    boxShadow: 0,
   },
   list: {
     width: 250,
@@ -87,9 +88,9 @@ export default withStyles(styleSheet)(Header);
 
 
 const Style = {
-  mainHeader: {
+  root: {
     display: 'flex',
-    backgroundColor: "teal",
+    backgroundColor: "blue",
     height: '48px'
   }
 }
