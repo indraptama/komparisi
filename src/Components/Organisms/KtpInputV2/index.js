@@ -4,8 +4,7 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
-
+import Radio from 'material-ui/Radio';
 
 // Import Components
 
@@ -104,36 +103,62 @@ class KtpInputV2 extends React.Component {
           <div className={classes.Card_content}>
             <CardContent>
               <label className="db mb3">
-                <span className="db mb2 f7">NIK</span>
+                <Typography type="subheading">NIK</Typography>
                 <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
               </label>
               <label className="db mb3">
-                <span className="db mb2 f7">Nama Lengkap</span>
+                <span className="db mb2 f7 ttu tracked fw5 gray">Nama Lengkap</span>
                 <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
               </label>
 
               <div className={classes.flex}>
                 <label className="db mb3 mr3 w-70">
-                  <span className="db mb2 f7">Kota Kelahiran</span>
+                  <span className="db mb2 f7 ttu tracked fw5 gray">Kota Kelahiran</span>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 w-30">
-                  <span className="db mb2 f7">Tanggal lahir</span>
+                  <span className="db mb2 f7 ttu tracked fw5 gray">Tanggal lahir</span>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
               </div>
 
+              <div className="div">
+                <h4 className="db mb2 f7"> Jenis Kelamin</h4>
+                <div className={classes.flexItemCenter}>
+                  <label className={classes.flexItemCenter}>
+                    <Radio
+                      checked={this.state.selectedValue === 'male'}
+                      onChange={this.handleChange}
+                      value="male"
+                      name="sex"
+                      aria-label="Male"
+                    />
+                    <span>Laki-laki</span>
+                  </label>
+                  <label className={classes.flexItemCenter}>
+                    <Radio
+                      checked={this.state.selectedValue === 'female'}
+                      onChange={this.handleChange}
+                      value="female"
+                      name="sex"
+                      aria-label="Female"
+                    />
+                    <span>Perempuan</span>
+                  </label>
+                </div>
+              </div>
+
               <div className={classes.flex}>
                 <label className="db mb3 mr3 w-60">
-                  <span className="db mb2 f7">Alamat</span>
+                  <span className="db mb2 f7 ttu tracked fw5 gray">Alamat</span>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 mr3 w-20">
-                  <span className="db mb2 f7">RT</span>
+                  <span className="db mb2 f7 ttu tracked fw5 gray">RT</span>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 w-20">
-                  <span className="db mb2 f7">RW</span>
+                  <span className="db mb2 f7 ttu tracked fw5 gray">RW</span>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
               </div>
@@ -165,6 +190,10 @@ const styleSheet = createStyleSheet(theme => ({
   },
   flex: {
     display: 'flex',
+  },
+  flexItemCenter: {
+    display: 'flex',
+    alignItems: 'center',
   },
   formControl: {
     margin: theme.spacing.unit,

@@ -13,3 +13,6 @@ Aplikasi untuk Manajemen Kantor Notaris
 - Optimizing untuk ubuntu linux
 - Offline app
 - dll
+
+#### Done
+- ~~Parsing Kode NIK~~
