@@ -31,7 +31,7 @@ function KomparisiResult(props) {
   const bornDateWord = (bornDateW+" "+bornMonthW+" "+bornYearW);
 
   return (
-    <p>
+    <p className="lh-copy courier">
       {`${personTitle} ${templateSource.fullName}, lahir di ${templateSource.bornPlace} pada tanggal ${templateSource.bornDate} (${bornDateWord}), ${templateSource.occupation} Warga Negara Indonesia. Pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan (NIK) ${templateSource.nik}. Bertempat tinggal di ${templateSource.cityType} ${templateSource.cityName}, beralamat di ${templateSource.streetAddress}, Rukun Tetangga ${templateSource.rt}, Rukun Warga ${templateSource.rw}, ${templateSource.kelurahanType} ${templateSource.kelurahanName}, Kecamatan  ${templateSource.kecamatan}`}
     </p>
   )

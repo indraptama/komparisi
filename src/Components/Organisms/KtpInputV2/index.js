@@ -109,7 +109,7 @@ class KtpInputV2 extends React.Component {
           <CardContent>
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="name" className={classes.Label}>Name</InputLabel>
-              <Input id="name" value={this.state.name} onChange={this.handleChange} />
+              <Input id="name" value={this.state.name} onChange={this.handleChange} className={classes.Input} fullWidth={true}/>
             </FormControl>
           </CardContent>
           <CardActions>
@@ -142,8 +142,11 @@ const styleSheet = createStyleSheet(theme => ({
     margin: theme.spacing.unit,
   },
   Label: {
-    top: -8,
+    top: -2,
   },
+  Input: {
+    paddingBottom: 8,
+  }
 }));
 
 
