@@ -5,6 +5,8 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Radio from 'material-ui/Radio';
+import MaskedInput from 'react-maskedinput';
+import Menu, { MenuItem } from 'material-ui/Menu';
 
 // Import Components
 
@@ -103,27 +105,27 @@ class KtpInputV2 extends React.Component {
           <div className={classes.Card_content}>
             <CardContent>
               <label className="db mb3">
-                <Typography type="subheading">NIK</Typography>
+                <Typography type="caption" className={classes.inputLabel}>NIK</Typography>
                 <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
               </label>
               <label className="db mb3">
-                <span className="db mb2 f7 ttu tracked fw5 gray">Nama Lengkap</span>
+                <Typography type="caption" className={classes.inputLabel}>Nama Lengkap</Typography>
                 <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
               </label>
 
               <div className={classes.flex}>
                 <label className="db mb3 mr3 w-70">
-                  <span className="db mb2 f7 ttu tracked fw5 gray">Kota Kelahiran</span>
+                  <Typography type="caption" className={classes.inputLabel}>Kota Kelahiran</Typography>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 w-30">
-                  <span className="db mb2 f7 ttu tracked fw5 gray">Tanggal lahir</span>
-                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                  <Typography type="caption" className={classes.inputLabel}>Tanggal Lahir</Typography>
+                  <MaskedInput mask="11-11-1111" className="input-reset sans pa2 w-100 ba b--black-50" type="text" placeholder="hh-bb-tttt"/>
                 </label>
               </div>
 
               <div className="div">
-                <h4 className="db mb2 f7"> Jenis Kelamin</h4>
+                <Typography type="caption" className={classes.inputLabel}>Jenis Kelamin</Typography>
                 <div className={classes.flexItemCenter}>
                   <label className={classes.flexItemCenter}>
                     <Radio
@@ -133,7 +135,7 @@ class KtpInputV2 extends React.Component {
                       name="sex"
                       aria-label="Male"
                     />
-                    <span>Laki-laki</span>
+                    <Typography type="body1">Laki-laki</Typography>
                   </label>
                   <label className={classes.flexItemCenter}>
                     <Radio
@@ -143,22 +145,32 @@ class KtpInputV2 extends React.Component {
                       name="sex"
                       aria-label="Female"
                     />
-                    <span>Perempuan</span>
+                    <Typography type="body1">Perempuan</Typography>
                   </label>
                 </div>
               </div>
 
               <div className={classes.flex}>
                 <label className="db mb3 mr3 w-60">
-                  <span className="db mb2 f7 ttu tracked fw5 gray">Alamat</span>
+                  <Typography type="caption" className={classes.inputLabel}>Alamat</Typography>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 mr3 w-20">
-                  <span className="db mb2 f7 ttu tracked fw5 gray">RT</span>
+                  <Typography type="caption" className={classes.inputLabel}>RT</Typography>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
                 <label className="db mb3 w-20">
-                  <span className="db mb2 f7 ttu tracked fw5 gray">RW</span>
+                  <Typography type="caption" className={classes.inputLabel}>RW</Typography>
+                  <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
+                </label>
+              </div>
+
+              <div className={classes.flex}>
+                <div>
+                  <Typography type="caption" className={classes.inputLabel}>Desa / Kelurahan</Typography>
+                </div>
+                <label className="db mb3 mr3 w-60">
+                  <Typography type="caption" className={classes.inputLabel}>Alamat</Typography>
                   <input className="input-reset sans pa2 w-100 ba b--black-50" type="text" />
                 </label>
               </div>
@@ -187,6 +199,9 @@ const styleSheet = createStyleSheet(theme => ({
   },
   textField: {
     paddingBottom: theme.spacing.unit,
+  },
+  inputLabel: {
+    marginBottom: theme.spacing.unit,
   },
   flex: {
     display: 'flex',
