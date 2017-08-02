@@ -1,8 +1,8 @@
 html {
-  font-size: 100%;
+  font-size: 87.5%;
   font-family: 'Roboto';
   overflow-y: scroll;
-  background-color: #ECEFF1;
+  background-color: #fff;
 }
 body {
   margin: 0;

@@ -3,7 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Aplikasi untuk Manajemen Kantor Notaris
 
 #### Todo
-- Use Css in JS
+- ~~Use CssInJS~~ Use Global CSS (tachyons.css) 
+- Buat tanda terima berkas
 - Merubah data KTP menjadi paragraf
 - membuat pilihan kewenangan bertindak penghadap
 - Membuat database para penghadap dengan informasi akta yang telah dibuat (PouchDB dan CouchDB)

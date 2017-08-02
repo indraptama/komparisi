@@ -38,34 +38,15 @@ class Header extends React.Component {
   render() {
     const classes = this.props.classes;
     return (
-      <div>
-      <header>
-        <AppBar className = {classes.root}>
-          <Toolbar>
-           <IconButton color="contrast" aria-label="Menu" onClick={this.handleLeftOpen.bind(this)}>
-             <MenuIcon />
-           </IconButton>
-           <Typography type="title" color="inherit">
-
-           </Typography>
-           <Button color="contrast">Login</Button>
-         </Toolbar>
-      </AppBar>
+      <header className="fixed top-0 left-0 right-0 ph2 bg-near-black">
+        <div className="header_container h3 flex items-end">
+          <nav className="flex f6">
+            <NavLink to='/' className="dib mr4 pb2 link white">Home</NavLink>
+            <NavLink to='/newktp' className="dib mr4 pb2 link white">New KTP</NavLink>
+            <NavLink to='/komparisi' className="dib mr4 pb2 link white">Komparisi</NavLink>
+          </nav>
+        </div>
       </header>
-
-      <Drawer
-        open={this.state.openDrawer.left}
-        onRequestClose={this.handleLeftClose}
-        onClick={this.handleLeftClose}>
-
-        <List className={classes.list} disablePadding>
-          <NavLink to='/'><ListItem>Home</ListItem></NavLink>
-          <NavLink to='/newktp'>New KTP</NavLink>
-          <NavLink to='/komparisi'>Komparisi</NavLink>
-        </List>
-
-        </Drawer>
-      </div>
     );
   }
 }
@@ -83,7 +64,7 @@ const styleSheet = createStyleSheet({
   }
 });
 
-export default withStyles(styleSheet)(Header);
+export default Header;
 
 
 
