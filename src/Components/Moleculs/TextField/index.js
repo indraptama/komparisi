@@ -15,7 +15,7 @@ function TextField(props) {
 
 
   return(
-    <label className="db mb3">
+    <label className="db">
       <span className="f7 db fw5 ttc silver ttc" ref={(span) => {Labels = span}}>{props.label}</span>
       <input
         className="input-reset sans pv2 w-100 ba-none"

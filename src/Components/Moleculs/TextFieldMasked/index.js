@@ -16,7 +16,7 @@ function TextFieldMasked(props) {
 
 
   return(
-    <label className="db mb3">
+    <label className="db">
       <span className="f7 db fw5 ttc silver ttc" ref={(span) => {Labels = span}}>{props.label}</span>
       <MaskedInput
         placeholderChar=" "

@@ -95,16 +95,46 @@ class KtpInputV3 extends React.Component {
           <h2 className="fw6 f1 mb3">Informasi Penghadap</h2>
           <p className="lh-copy gray">Isi data-data penghadap sesuai dengan Kartu Identitas Penduduk (KTP)</p>
         </header>
-        <div className="mw8 elevation pa5 ba b--black-10 br2">
-          <h3 className="mb4 fw5 f3 orange">Informasi Pribadi</h3>
+        <div className="mw8 elevation pa5 ba b--black-10 br2 bg-white">
+
           <form onSubmit={this.onSubmitHandler.bind(this)}>
             <ul>
+            <li><h3 className="mb4 fw5 f3 orange">Informasi Pribadi</h3></li>
             <li className="mb4"><TextFieldMasked label="Nomor Induk Kependudukan" mask="1111111111111111"/></li>
             <li className="mb4"><TextField label="Nama Lengkap" /></li>
             <li className="mb4 flex items-center">
               <div className="w-50 mr4"><TextField label="Kota Kelahiran" /></div>
               <div className="w-50"><TextFieldMasked label="Tanggal Lahir" mask="11-11-1111" /></div>
             </li>
+
+            <li><h3 className="mb4 fw5 f3 orange pt4">Alamat Penghadap</h3></li>
+            <li className="mb4 flex items-center">
+              <div className="w-50 mr4"><TextField label="Alamat" /></div>
+              <div className="w-50 flex">
+                <div className="w-50 mr4">
+                  <TextFieldMasked label="R.T" mask="111" />
+                </div>
+                <div className="w-50">
+                  <TextFieldMasked label="R.W" mask="111" />
+                </div>
+              </div>
+            </li>
+
+            <li className="mb4 flex items-center">
+              <div className="w-one-third mr4"><TextField label="Jenis Administrasi" /></div>
+              <div className="w-two-thirds"><TextField label="Nama Desa / Kelurahan" /></div>
+            </li>
+
+            <li className="mb4"><TextField label="Kecamatan" /></li>
+
+            <li className="mb4 flex items-center">
+              <div className="w-one-third mr4"><TextField label="Jenis Administrasi" /></div>
+              <div className="w-two-thirds"><TextField label="Nama Kabupaten / Kota" /></div>
+            </li>
+
+            <li><h3 className="mb4 fw5 f3 orange pt4">Status Perkawinan & Pekerjaan</h3></li>
+            <li className="mb4"><TextField label="Status Perkawinan"/></li>
+            <li className="mb4"><TextField label="Status Perkawinan"/></li>
             </ul>
           </form>
         </div>
