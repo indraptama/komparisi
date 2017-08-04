@@ -3,6 +3,8 @@ import React from 'react';
 // Import Components
 import TextField from '../../Moleculs/TextField'
 import TextFieldMasked from '../../Moleculs/TextFieldMasked'
+import SelectField from '../../Moleculs/SelectField'
+import RadioOrCheckboxField from '../../Moleculs/RadioOrCheckboxField'
 // Icons
 import MaleIcon from '../../Icons/male.svg';
 import FemaleIcon from '../../Icons/female.svg';
@@ -106,6 +108,13 @@ class KtpInputV3 extends React.Component {
               <div className="w-50 mr4"><TextField label="Kota Kelahiran" /></div>
               <div className="w-50"><TextFieldMasked label="Tanggal Lahir" mask="11-11-1111" /></div>
             </li>
+            <li><RadioOrCheckboxField
+                  type="radio"
+                  name="sex"
+                  options={DataSex}
+                />
+            </li>
+
 
             <li><h3 className="mb4 fw5 f3 orange pt4">Alamat Penghadap</h3></li>
             <li className="mb4 flex items-center">
@@ -121,20 +130,28 @@ class KtpInputV3 extends React.Component {
             </li>
 
             <li className="mb4 flex items-center">
-              <div className="w-one-third mr4"><TextField label="Jenis Administrasi" /></div>
+              <div className="w-third mr4">
+                <SelectField label="Jenis Administrasi" dataOptions={DataDesa}/>
+              </div>
               <div className="w-two-thirds"><TextField label="Nama Desa / Kelurahan" /></div>
             </li>
 
             <li className="mb4"><TextField label="Kecamatan" /></li>
 
-            <li className="mb4 flex items-center">
-              <div className="w-one-third mr4"><TextField label="Jenis Administrasi" /></div>
+            <li className="mb4 flex items-end">
+              <div className="w-third mr4">
+                <SelectField label="Jenis Administrasi" dataOptions={DataKota}/>
+              </div>
               <div className="w-two-thirds"><TextField label="Nama Kabupaten / Kota" /></div>
             </li>
 
             <li><h3 className="mb4 fw5 f3 orange pt4">Status Perkawinan & Pekerjaan</h3></li>
-            <li className="mb4"><TextField label="Status Perkawinan"/></li>
-            <li className="mb4"><TextField label="Status Perkawinan"/></li>
+            <li className="mb4 flex items-center">
+              <div className="w-50 mr4">
+                <SelectField name="martialStatus" label="Status Perkawinan" dataOptions={DataMartiaStatus}/>
+              </div>
+              <div className="w-50"><TextField label="Pekerjaan" /></div>
+            </li>
             </ul>
           </form>
         </div>
@@ -142,6 +159,29 @@ class KtpInputV3 extends React.Component {
     );
   }
 }
+
+// const SelectField = (props) => {
+//   let Labels = null;
+//   let highlightLine = null;
+//   return (
+//     <div className="w-100 db">
+//       <span className="f7 db fw5 ttc silver ttc" ref={(span) => {Labels = span}}>{props.label}</span>
+//       <select
+//         className="input-reset db sans pv2 w-100 ba-none bg-white Select_arrow"
+//         style={Style.SelectStyle}
+//         defaultValue={props.defaultValue}
+//         onChange={props.onChange}
+//       >
+//         <option className="w-100 db" value={props.value}>Kota</option>
+//         <option className="w-100 db" value={props.value}>Kabupaten</option>
+//       </select>
+//       <div className="relative w-100 overflow-x-hidden">
+//         <span className="w-100 db absolute z-2 top-0" ref={(span) => {highlightLine = span}} style={Style.highlightLine}/>
+//         <span className="w-100 db bb b--black-20 relative z-1"/>
+//       </div>
+//     </div>
+//   )
+// }
 
 
 
@@ -159,6 +199,9 @@ const Style = {
     height: 1,
     width: '100%',
     background: 'linear-gradient(to left, #cc2b5e, #753a88)',
+  },
+  SelectStyle: {
+    height: '2.15rem',
   }
 }
 
