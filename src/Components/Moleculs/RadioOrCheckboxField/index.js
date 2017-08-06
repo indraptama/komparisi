@@ -1,21 +1,25 @@
 import React from 'react';
 
 function RadioOrCheckboxField(props) {
+let Labels = null;
 
 return (
   <div>
-		<label className="form-label">{props.title}</label>
-		<div className="checkbox-group">
+	  <span className="f7 db fw5 ttc silver ttc mb3" ref={(span) => {Labels = span}}>{props.label}</span>
+		<div className="flex items-center">
 			{props.options.map(option => {
+
 				return (
-					<label key={option.value} className="form-label capitalize">
+					<label key={option.value} className="flex items-center mr4">
 						<input
 							className="form-checkbox"
 							name={props.name}
-							onChange={props.controlFunc}
-							value={option}
-							type={props.type} />
-              {option.label}
+							onClick={props.onClick}
+							value={option.value}
+							type={props.type}
+              defaultChecked={option.value === props.defChecked}
+            />
+              <span className="ml2 dib">{option.label}</span>
 					</label>
 				);
 			})}
@@ -24,14 +28,6 @@ return (
 )
 }
 
-// CheckboxOrRadioGroup.propTypes = {
-// 	title: React.PropTypes.string.isRequired,
-// 	type: React.PropTypes.oneOf(['checkbox', 'radio']).isRequired,
-// 	setName: React.PropTypes.string.isRequired,
-// 	options: React.PropTypes.array.isRequired,
-// 	selectedOptions: React.PropTypes.array,
-// 	controlFunc: React.PropTypes.func.isRequired
-// };
-//
+
 
 export default RadioOrCheckboxField;

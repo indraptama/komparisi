@@ -3,6 +3,7 @@ import numToWord from '../../../Lib/numtoword'
 import monthToWord from '../../../Lib/monthtoword'
 
 function KomparisiResult(props) {
+
   let DataKtp = props.dataKTP;
   let templateSource = {
     nik: DataKtp.nik,
@@ -22,6 +23,7 @@ function KomparisiResult(props) {
     occupation: DataKtp.occupation,
   }
 
+  const fullNameUpperCase = templateSource.fullName.toUpperCase();
   const personTitle = getTitle(templateSource.sex, templateSource.martialStatus);
   const bornDataArray = (templateSource.bornDate).split('-').map(key => parseInt(key, 10));
   const bornDateW = numToWord(bornDataArray[0]);
@@ -29,11 +31,23 @@ function KomparisiResult(props) {
   const bornYearW = numToWord(bornDataArray[2]);
 
   const bornDateWord = (bornDateW+" "+bornMonthW+" "+bornYearW);
+  const cityTypeAndName = templateSource.cityType+ +templateSource.cityName;
+
+  const notarisLocation = (notarisLocation, peopleLocation) => {
+    if(notarisLocation !== peopleLocation) {
+      return (
+        <span>{" (Untuk sementara berada di Kabupaten Bandung)."}</span>
+      )
+    }
+  }
 
   return (
-    <p className="lh-copy courier">
-      {`${personTitle} ${templateSource.fullName}, lahir di ${templateSource.bornPlace} pada tanggal ${templateSource.bornDate} (${bornDateWord}), ${templateSource.occupation} Warga Negara Indonesia. Pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan (NIK) ${templateSource.nik}. Bertempat tinggal di ${templateSource.cityType} ${templateSource.cityName}, beralamat di ${templateSource.streetAddress}, Rukun Tetangga ${templateSource.rt}, Rukun Warga ${templateSource.rw}, ${templateSource.kelurahanType} ${templateSource.kelurahanName}, Kecamatan  ${templateSource.kecamatan}`}
+    <div className="lh-copy courier ttc" key={templateSource.nik}>
+    <p>
+      {`${personTitle} ${fullNameUpperCase}, lahir di ${templateSource.bornPlace} pada tanggal ${templateSource.bornDate} (${bornDateWord}), ${templateSource.occupation}, Warga Negara Indonesia. Pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan (NIK) ${templateSource.nik}. Bertempat tinggal di ${templateSource.cityType} ${templateSource.cityName}, ${templateSource.streetAddress}, Rukun Tetangga ${templateSource.rt}, Rukun Warga ${templateSource.rw}, ${templateSource.kelurahanType} ${templateSource.kelurahanName}, Kecamatan  ${templateSource.kecamatan}`}
+      {notarisLocation('bandung', templateSource.cityName)}
     </p>
+  </div>
   )
 
 

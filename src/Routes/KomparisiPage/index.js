@@ -1,9 +1,14 @@
 import React from 'react';
 import _ from 'lodash';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Button from 'material-ui/Button';
-import KtpInput from '../../Components/Organisms/KtpInput'
+import KtpInputV3 from '../../Components/Organisms/KtpInputV3'
 import KomparisiResult from '../../Components/Organisms/KomparisiResult'
+
+import PeopleCard from '../../Components/Moleculs/PeopleCard';
+
+// MOBX
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 
 import Dialog, { DialogContent } from 'material-ui/Dialog';
 
@@ -29,7 +34,7 @@ export default class KomparisiPage extends React.Component {
   addPihak_2(e) {
     const PIHAK_1 = _.size(this.state.pihak_1);
     console.log(this.state)
-    console.log(PIHAK_1);
+    console.log(PIHAK_1.length);
   }
 
   dialogRequestClose() {
@@ -42,8 +47,9 @@ export default class KomparisiPage extends React.Component {
 
   addNewKtpDataPihak_1(data) {
     const pihak_1 = {...this.state.pihak_1};
+    const noUrut = Object.keys(pihak_1).length + 1;
     const nik = data.nik;
-    pihak_1[`${nik}`] = data;
+    pihak_1[`${noUrut}`] = data;
     this.setState({
       pihak_1: pihak_1,
       dialogOpen: false
@@ -72,13 +78,20 @@ export default class KomparisiPage extends React.Component {
     return (
       <div className="KomparisiPage">
         <div className="flex">
-          <div className="minh-100vh w-50 pa5">
+          <div className="minh-100vh w-50 pa5 bg-near-white">
             <div className="mw6 center">
 
               <div className="penghadap_1 mb6">
-                <h2 className="f5 pv3 bb b--black-20">Pihak Pertama</h2>
-                <div className="penghadap_1__list mb3">
-
+                <h2 className="f5 pv3 bb b--black-20 mb4">Pihak Pertama</h2>
+                <div className="penghadap_1__list mb3 flex flex-wrap">
+                  {
+                    Object.keys(Pihak_1).map(key => {
+                      return (
+                        <PeopleCard fullName={Pihak_1[key].fullName} Nik={Pihak_1[key].nik} sex={Pihak_1[key].sex} />
+                      )
+                    })
+                  }
+                  <PeopleCard fullName="Indra Pratama Putra" Nik="3204070911850005" sex="male" />
                 </div>
                 <div className="penghadap_1__action tr">
                    <Button onClick={() => this.setState({ dialogOpen: true })}>Tambah Penghadap</Button>
@@ -107,7 +120,7 @@ export default class KomparisiPage extends React.Component {
               onRequestClose={this.dialogRequestClose}
               maxWidth='md'>
         <DialogContent>
-          <KtpInput getKTPData={this.addNewKtpDataPihak_1.bind(this)}/>
+          <KtpInputV3 getKTPData={this.addNewKtpDataPihak_1.bind(this)}/>
         </DialogContent>
       </Dialog>
       </div>);

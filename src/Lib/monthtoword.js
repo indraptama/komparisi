@@ -1,7 +1,7 @@
 // convert number to Month Word
 function numToMonth(s) {
-var MonthWord = '';
-var Month =[
+let MonthWord = '';
+const Month =[
   'Januari',
   'Februari',
   'Maret',
@@ -15,9 +15,9 @@ var Month =[
   'November',
   'Desember'
   ];
-var sNum = parseFloat(s);
-var MonthNumber = sNum-1;
-var MonthWord = Month[MonthNumber];
+const sNum = parseFloat(s);
+const MonthNumber = sNum-1;
+MonthWord = Month[MonthNumber];
 return MonthWord;
 }
 
