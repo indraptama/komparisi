@@ -30,10 +30,9 @@ Kumpulan Komparisi Akta-akta Notaris
 
 ### Bertindak Untuk diri Sendiri dengan persetujuan Mantan Istri
   Tuan Agung Budiman, (identitas),   
-  Menurut Keterangannya dalam melakukan tindakan hukum dibawah ini:
-  tidak terikat dalam perkawinan yang sah dengan siapapun juga, baik menurut agama dan kepercayaannya, maupun menurut hukum atau peraturan perundangan-undangan yang berlaku, dan telah mendapatkan persetujuan dari mantan istrinya yaitu:  
-  Nyonya Bunga (identitas)  
-  yang juga turut hadir dan menghadap kepada saya, Notaris. dan menandatangani akta ini sebagai bukti persetujuannya.
+Menurut keterangannya telah melangsungkan parkawinan dalam percampuran harta perkawinan (gono-gini) dengan mantan istrinya: Nyonya AA, identitas, 
+dan perkawinan tersebut telah berakhir sebagaimana ternyata dalam Akta Cerai, yang dikeluarkan oleh Pengadilan Negeri Agama Kabupaten___, tertanggal __,Nomor, yang aslinya diperlihatkan kepada saya, Notaris.
+Sedang untuk melakukan tindakan hukum dalam akta ini, penghadap telah mendapat persetjuan dari mantan istrinya tersebut di atas, yang juga turut hadir dihadapan saya, Notaris dan saksi-saksi yang sama dan turut menandatangani akta ini sebagai bukti persetujuannya.
 
 ### Bertindak Untuk diri Sendiri, Benda merupakaan harta Bawaan
   Tuan Agung Budiman, (identitas),   
